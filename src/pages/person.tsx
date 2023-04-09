@@ -9,7 +9,7 @@ export default function Person({ person }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch('https://swapi.dev/api/people/1');
+  const res = await fetch(`${process.env.SWAPI_API_URL}/people/1`);
   const person = await res.json();
 
   return {
