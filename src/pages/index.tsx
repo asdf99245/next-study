@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
+import { USERS } from './../constants/index';
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <p>This is env: {process.env.NEXT_PUBLIC_SECRET_KEY}</p>
         <ul>
           <li>
             <Link href="/about">소개페이지로</Link>
@@ -20,6 +21,14 @@ export default function Home() {
           <li>
             <Link href="/person">person페이지로</Link>
           </li>
+          <li>
+            <Link href="/user">내 페이지</Link>
+          </li>
+          {USERS.map((user) => (
+            <li key={user}>
+              <Link href={`/user/${user}`}>{user} 페이지</Link>
+            </li>
+          ))}
         </ul>
       </main>
     </>
